@@ -8,7 +8,7 @@ class App extends React.Component {
 
     render(){
         return (<div className="mycontent">
-                    <SimpleDemo />
+                    <SimpleDemo id="mapid"/>
                 </div>                
         )
     }
