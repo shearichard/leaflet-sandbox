@@ -1,3 +1,26 @@
+//TEMP STYLING STARTS
+.mycontent {
+    background-color: #004643;
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-right: 15%;
+    margin-bottom:  15%;
+
+}
+h1 {
+    color: #FFFFFE;
+    font-size: 30px;
+    font-family: Menlo, Monaco, fixed-width;
+}
+p {
+    color: #ABD1C6;
+    font-family: "Source Code Pro", Menlo, Monaco, fixed-width;
+}
+#mapid {
+    border-style: solid;
+    border-color: #E16162;
+}
+//TEMP STYLING ENDS   
 .App {
   text-align: center;
 }
