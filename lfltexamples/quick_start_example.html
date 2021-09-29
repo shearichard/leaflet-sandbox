@@ -14,12 +14,12 @@
 
 	<style>
 		body {
+            margin: 0;
 			background-color: #004643;
-            margin-left: 5%;
-            margin-top: 5%;
-            margin-right: 15%;
-            margin-bottom:  15%;
-
+            padding-left: 5%;
+            padding-top: 5%;
+            padding-right: 15%;
+            padding-bottom:  15%;
 		}
 		
 		h1 {
@@ -42,51 +42,51 @@
 	
 </head>
 <body>
+    <div id="root">
+        <div id="mycontent">
+            <h1>Leaflet Sandbox Simple Demo</h1>
+            <p>This is an adaption of the Leaflet Quick Start demo. The initial viewpoint of the map shows an area of central Wellington, New Zealand.</p>
+            <p>The blue rectangle shows a block of streets bounded by : Courtenay Place; Taranaki Street; Vivian Street; and Cambridge Terrace.</p>
+            <div id="mapid" style="width: 600px; height: 450px;"></div>
+        </div>
+    </div>
+
+    <script>
+
+        var mymap = L.map('mapid').setView([-41.29244, 174.77890], 15);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(mymap);
+
+        L.marker([-41.29244, 174.77890]).addTo(mymap)
+            .bindPopup("Where Taranaki St meets Dixon St.").openPopup();
+
+        L.polygon([
+            [-41.29244, 174.77890],
+            [-41.29551, 174.77715],
+            [-41.29707, 174.78200],
+            [-41.29407, 174.78391]
+        ]).addTo(mymap).bindPopup("A block of streets south of Courtenay Place.");
 
 
-    <h1>Leaflet Sandbox Simple Demo</h1>
-    <p>This is an adaption of the Leaflet Quick Start demo</p>
-    <p>The blue rectangle shows the block of streets bounded by : Courtenay Place; Taranaki Street; Vivian Street; and Cambridge Terrace.</p>
-<div id="mapid" style="width: 600px; height: 400px;"></div>
-<script>
+        var popup = L.popup();
 
-	var mymap = L.map('mapid').setView([-41.29244, 174.77890], 14);
+        function onMapClick(e) {
+            popup
+                .setLatLng(e.latlng)
+                .setContent("You clicked the map at " + e.latlng.toString())
+                .openOn(mymap);
+        }
 
-	L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
-			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-		id: 'mapbox/streets-v11',
-		tileSize: 512,
-		zoomOffset: -1
-	}).addTo(mymap);
+        mymap.on('click', onMapClick);
 
-	L.marker([-41.29244, 174.77890]).addTo(mymap)
-		.bindPopup("Where Taranaki St meets Dixon St.").openPopup();
-
-	L.polygon([
-		[-41.29244, 174.77890],
-		[-41.29551, 174.77715],
-		[-41.29707, 174.78200],
-		[-41.29407, 174.78391]
-	]).addTo(mymap).bindPopup("A block of streets south of Courtenay Place.");
-
-
-	var popup = L.popup();
-
-	function onMapClick(e) {
-		popup
-			.setLatLng(e.latlng)
-			.setContent("You clicked the map at " + e.latlng.toString())
-			.openOn(mymap);
-	}
-
-	mymap.on('click', onMapClick);
-
-</script>
-
-
-
+    </script>
 </body>
 </html>
 
