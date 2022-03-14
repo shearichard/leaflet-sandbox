@@ -10,7 +10,10 @@ class StaticRender extends React.Component {
                         <p>This is a simple example using the React Leaflet project. The initial viewpoint of the map shows an area of central Auckland, New Zealand.</p>
                         <p>The purple rectangle shows a block of streets bounded by : Queen Street; Wyndham Street; Nelson Street; and Wellesley Street.</p>
                     </>
-                    <BasicMap id="mapid"/>
+                    {/*
+                    <BasicMap { ... {id="mapid", showcontrols=false }} />
+                    */}
+                    <BasicMap id="mapid"  showcontrols={false} />
                 </div>                
         )
     }
