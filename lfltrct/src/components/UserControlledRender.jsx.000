@@ -1,0 +1,103 @@
+import React from 'react'
+import {
+  Dropdown,
+  UncontrolledDropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  InputGroup,
+  Button,
+} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ControllableMap from './ControllableMap'
+
+const UserControlledRender = () => {
+    return (<div className="mycontent">
+                <>
+                    <br />
+                    <h1>User Controlled Render</h1>
+                    <h2>A functional component</h2>
+                </>
+				<div className="d-flex justify-content-center p-5">
+					<UncontrolledDropdown>
+					<DropdownToggle caret>
+					  Uncontrolled Dropdown
+					</DropdownToggle>
+					<DropdownMenu>
+					  <DropdownItem header>Header</DropdownItem>
+					  <DropdownItem disabled>Action</DropdownItem>
+					  <DropdownItem>Another Action</DropdownItem>
+					  <DropdownItem divider />
+					  <DropdownItem>Another Action</DropdownItem>
+					</DropdownMenu>
+					</UncontrolledDropdown>
+				</div>
+				<div className="d-flex justify-content-center p-5">
+				  <InputGroup size="sm">
+					<Input />
+				  </InputGroup>
+				</div>
+			<Form inline>
+			  <FormGroup>
+				<Label
+				  for="exampleEmail"
+				  hidden
+				>
+				  Email
+				</Label>
+				<Input
+				  id="exampleEmail"
+				  name="email"
+				  placeholder="Email"
+				  type="email"
+				/>
+			  </FormGroup>
+			  {' '}
+			  <FormGroup>
+				<Label
+				  for="examplePassword"
+				  hidden
+				>
+				  Password
+				</Label>
+				<Input
+				  id="examplePassword"
+				  name="password"
+				  placeholder="Password"
+				  type="password"
+				/>
+			  </FormGroup>
+			  {' '}
+			  <Button>
+				Submit
+			  </Button>
+			</Form>
+<Form>
+  <FormGroup
+    check
+    inline
+  >
+    <Input type="checkbox" />
+    <Label check>
+      Some input
+    </Label>
+  </FormGroup>
+  <FormGroup
+    check
+    inline
+  >
+    <Input type="checkbox" />
+    <Label check>
+      Some other input
+    </Label>
+  </FormGroup>
+</Form>
+                <ControllableMap id="mapid"  showcontrols={false} />
+            </div>                
+    )
+}
+export default UserControlledRender

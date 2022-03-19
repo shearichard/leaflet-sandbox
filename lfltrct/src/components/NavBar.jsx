@@ -34,6 +34,9 @@ const NavBar = (props) => {
             <NavItem>
               <NavLink href="/dynamicrender/">Dynamic Render</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/usercontrolledrender/">User Controlled Render</NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
