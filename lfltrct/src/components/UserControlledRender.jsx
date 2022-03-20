@@ -16,6 +16,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ControllableMap from './ControllableMap'
 
 const UserControlledRender = () => {
+
+    const [longitude, setLongitude] = React.useState(null);
+    const [latitude, setLatitude] = React.useState(null);
+
+
+    const refreshMap = () => {
+        console.log("refreshMap firing")
+        console.log(longitude)
+        console.log(latitude)
+    }
     return (<div className="mycontent">
                 <>
                     <br />
@@ -26,8 +36,16 @@ const UserControlledRender = () => {
                 <Form inline>
                   <FormGroup>
                     <Label for="degreeslatitude" hidden >Latitude</Label>
-                    <Input id="degreeslatitude" name="degreeslatitude" placeholder="Degrees Latitude" type="text" />
+                    <Input 
+                        value={latitude}   
+                        name="degreeslatitude" 
+                        id="degreeslatitude" 
+                        placeholder="Degrees Latitudex" 
+                        type="text"
+                        onChange={e => setLatitude(e.target.value)} 
+                    />
                   </FormGroup>
+                  {/*
                   {'X'}
                 <UncontrolledDropdown>
                     <DropdownToggle caret>
@@ -38,13 +56,21 @@ const UserControlledRender = () => {
                       <DropdownItem>South</DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>
+                */}
                   {'X'}
                   <FormGroup>
                     <Label for="degreeslongitude" hidden >Longitude</Label>
-                    <Input id="degreeslongitude" name="degreeslongitude" placeholder="Degrees Longitude" type="text" />
+                    <Input 
+                        value={longitude}   
+                        name="degreeslongitude" 
+                        id="degreeslongitude" 
+                        placeholder="Degrees Longitudex" 
+                        type="text"
+                        onChange={e => setLongitude(e.target.value)} 
+                    />
                   </FormGroup>
-                  {' '}
-                  {' '}
+                  {/*
+                  {'X'}
                 <UncontrolledDropdown>
                     <DropdownToggle caret>
                         East/West
@@ -54,8 +80,9 @@ const UserControlledRender = () => {
                       <DropdownItem>West</DropdownItem>
                     </DropdownMenu>
                 </UncontrolledDropdown>
-                  {' '}
-                  <Button>Submit</Button>
+                */}
+                  {'X'}
+                  <Button onClick={refreshMap} >Submit</Button>
                 </Form>
 				</div>
                 <ControllableMap id="mapid"  showcontrols={false} />
