@@ -161,7 +161,7 @@ function MyComponent() {
 
 function MyMapComponent() {
     return (
-        <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={[50.5, 30.5]} zoom={15} scrollWheelZoom={false}>
+        <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={[41.881944, -87.627778]} zoom={9} scrollWheelZoom={false}>
             <MyComponent />
         </MapContainer>
     )
