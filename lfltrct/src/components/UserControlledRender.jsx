@@ -67,7 +67,11 @@ const UserControlledRender = () => {
             [latitude - 0.2, longitude - 0.2]]
         console.log(aod)
         setAreaOfInterest(aod)                 
-        setMapPosition(makeMapPosition(longitude, latitude))
+        console.log(`About to call makeMapPosition ... latitude = ${latitude}, longitude = ${longitude} . `)
+        let mp = makeMapPosition(longitude, latitude)
+        console.log(`Finished call makeMapPosition ... latitude = ${latitude}, longitude = ${longitude}, mp = ${mp} . `)
+        console.log(mp)
+        setMapPosition(mp)
     }
     //
     return (<div className="mycontent">
@@ -137,19 +141,52 @@ const UserControlledRender = () => {
                     areaOfInterest={areaOfInterest}
                 />
                 */}
-                <h2>My Component v2</h2>            
-                <MyMapComponent />
+                <h2>My Component v3</h2>            
+                <MyMapComponent 
+                    mapPosition={mapPosition}
+                />
             </div>                
     )
 }
 
-function MyComponent_1() {
-    const map = useMap()
-    console.log('map center:', map.getCenter())
-    return null
+/*
+function MyComponent(props) {
+    const map = useMap();
+    map.setView(props.center, props.zoom);
+    return null;
 }
-function MyComponent() {
+*/
+function MyMapComponent( props ) {
+    //
+    //[41.881944, -87.627778]
+    //
+    //Chicago
+    //Paris
+    //Johnannesberg
+    //Bangalore
+    const cities = [
+        [41.881944, -87.627778],
+        [48, 2],
+        [-26.2044, 28.0455],
+        [12.978889, 77.591667]
+    ] 
+    const selected_city = cities[Math.floor(Math.random() * cities.length)]
+    //
+    console.log("MyMapComponent, props follow ...")
+    console.log(props)
+    console.log("MyMapComponent, selected_city follow ...")
+    console.log(selected_city)
+    //
+    //<MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={selected_city} zoom={9} scrollWheelZoom={false}>
+    return (
+        <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} scrollWheelZoom={false}>
+            <MyComponent  center={selected_city} zoom={9} />
+        </MapContainer>
+    )
+}
+function MyComponent( props ) {
     const map = useMap()
+    map.setView(props.center, props.zoom);
     console.log('map center:', map.getCenter())
     return (
         <TileLayer
@@ -158,12 +195,10 @@ function MyComponent() {
         />
     )
 }
-
-function MyMapComponent() {
-    return (
-        <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={[41.881944, -87.627778]} zoom={9} scrollWheelZoom={false}>
-            <MyComponent />
-        </MapContainer>
-    )
+function MyComponent_HIDE_1() {
+    const map = useMap()
+    console.log('map center:', map.getCenter())
+    return null
 }
+
 export default UserControlledRender
