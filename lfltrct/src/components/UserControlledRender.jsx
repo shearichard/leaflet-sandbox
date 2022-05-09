@@ -50,6 +50,7 @@ const UserControlledRender = () => {
     const [latitude, setLatitude] = useState(null);
     const [areaOfInterest, setAreaOfInterest] = useState(initialLatLngs)
     const [mapPosition, setMapPosition] = useState(initialMapPosition)
+    const [fake_mapPosition, fake_setMapPosition] = useState(initialMapPosition.join("_"))
     //This useEffect is only here while the changing of
     //the areaOfInterest stabilises
     useEffect(() => console.log(areaOfInterest), [areaOfInterest]);
@@ -142,21 +143,38 @@ const UserControlledRender = () => {
                 />
                 */}
                 <h2>My Component v3</h2>            
-                <MyMapComponent 
-                    mapPosition={mapPosition}
+                <label>City:</label>
+                <select
+                    required
+                    value={fake_mapPosition}
+                    onChange={(e) => {fake_setMapPosition(e.target.value)} }
+                >
+									<option value="41.881944_-87.627778">Chicago</option>
+									<option value="48_2">Paris</option>
+									<option value="-26.2044_28.0455">Johnannesberg</option>
+									<option value="12.978889_77.591667">Bangalore</option>
+                </select>
+                <ControllableMapAlternate 
+                    mapPosition={fake_mapPosition}
                 />
             </div>                
     )
 }
 
 /*
-function MyComponent(props) {
+function InternalMapCntnr(props) {
     const map = useMap();
     map.setView(props.center, props.zoom);
     return null;
 }
 */
-function MyMapComponent( props ) {
+const ControllableMapAlternate = ( props ) => {
+	//
+	//The props.mapPosition value is a string that looks like this
+	//"12_34" which needs to be converted to a two element array like
+	//this [12,34] which equates to a latitude of 12 and a longitude of
+	//34
+	//
     //
     //[41.881944, -87.627778]
     //
@@ -172,19 +190,21 @@ function MyMapComponent( props ) {
     ] 
     const selected_city = cities[Math.floor(Math.random() * cities.length)]
     //
-    console.log("MyMapComponent, props follow ...")
+    console.log("ControllableMapAlternate, props follow ...")
     console.log(props)
-    console.log("MyMapComponent, selected_city follow ...")
+    console.log("ControllableMapAlternate, selected_city follow ...")
     console.log(selected_city)
     //
     //<MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={selected_city} zoom={9} scrollWheelZoom={false}>
+		//<InternalMapCntnr  center={selected_city} zoom={9} />
+    //
     return (
         <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} scrollWheelZoom={false}>
-            <MyComponent  center={selected_city} zoom={9} />
+            <InternalMapCntnr  center={props.mapPosition.split("_")} zoom={9} />
         </MapContainer>
     )
 }
-function MyComponent( props ) {
+const InternalMapCntnr = ( props ) => {
     const map = useMap()
     map.setView(props.center, props.zoom);
     console.log('map center:', map.getCenter())
@@ -194,11 +214,6 @@ function MyComponent( props ) {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
     )
-}
-function MyComponent_HIDE_1() {
-    const map = useMap()
-    console.log('map center:', map.getCenter())
-    return null
 }
 
 export default UserControlledRender
