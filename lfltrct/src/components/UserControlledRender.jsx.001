@@ -13,12 +13,6 @@ import {
   InputGroup,
   Button,
 } from 'reactstrap';
-//_________________________________________
-import { useMap } from 'react-leaflet'
-import { MapContainer, Polygon, Marker, Popup, TileLayer } from "react-leaflet";
-//_________________________________________
-//import { useMap } from 'https://cdn.esm.sh/react-leaflet/hooks'
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ControllableMap from './ControllableMap'
 
@@ -129,41 +123,13 @@ const UserControlledRender = () => {
                   <Button onClick={foo}>Call foo</Button> 
                 </Form>
 				</div>
-                {/*
                 <ControllableMap 
                     id="mapid"  
                     showcontrols={false} 
                     mapPosition={mapPosition}
                     areaOfInterest={areaOfInterest}
                 />
-                */}
-                <h2>My Component v2</h2>            
-                <MyMapComponent />
             </div>                
-    )
-}
-
-function MyComponent_1() {
-    const map = useMap()
-    console.log('map center:', map.getCenter())
-    return null
-}
-function MyComponent() {
-    const map = useMap()
-    console.log('map center:', map.getCenter())
-    return (
-        <TileLayer
-            attribution= 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-    )
-}
-
-function MyMapComponent() {
-    return (
-        <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={[50.5, 30.5]} zoom={15} scrollWheelZoom={false}>
-            <MyComponent />
-        </MapContainer>
     )
 }
 export default UserControlledRender

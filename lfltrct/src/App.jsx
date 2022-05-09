@@ -8,6 +8,7 @@ import Home from './components/Home'
 import StaticRender from './components/StaticRender'
 import DynamicRender from './components/DynamicRender'
 import UserControlledRender from './components/UserControlledRender'
+import SampleRender from './components/SampleRender'
 
 import {
   BrowserRouter as Router,
@@ -28,6 +29,7 @@ export default function App() {
             <Route path="/staticrender" component={StaticRender} />
             <Route path="/dynamicrender" component={DynamicRender} />
             <Route path="/usercontrolledrender" component={UserControlledRender} />
+            <Route path="/samplerender" component={SampleRender} />
             <Route path="/" component={Home} />
         </Switch>
           </div>

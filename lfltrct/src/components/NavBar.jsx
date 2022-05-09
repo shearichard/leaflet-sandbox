@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import BasicMap from './BasicMap'
 import {
   Collapse,
   Navbar,
@@ -36,6 +35,9 @@ const NavBar = (props) => {
             </NavItem>
             <NavItem>
               <NavLink href="/usercontrolledrender/">User Controlled Render</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/samplerender/">Sample</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
