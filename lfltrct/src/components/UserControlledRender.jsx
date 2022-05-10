@@ -67,9 +67,6 @@ const UserControlledRender = () => {
     //the areaOfInterest stabilises
     useEffect(() => console.log(areaOfInterest), [areaOfInterest]);
     //
-    const foo = () => {
-        alert("This is foo")
-    }
     const refreshMap = () => {
         console.log(`refreshMap starts latitude = ${latitude}, longitude = ${longitude} . `)
         //let aod = makeAreaDefinition(longitude, latitude)                 
