@@ -88,112 +88,40 @@ const UserControlledRender = () => {
     }
     //
     return (<div className="mycontent">
-                <>
-                    <br />
-                    <h1>User Controlled Render</h1>
-                </>
-				<div className="d-flex justify-content-left p-5">
-                <Form inline>
+              <>
+                <br/>
+                <h1>Use Controlled Render</h1>
+              </>
+              <div className="d-flex justify-content-left p-5">
+                <Form>
                   <FormGroup>
-                    <Label for="degreeslatitude" hidden >Latitude</Label>
-                    <Input 
-                        value={latitude}   
-                        name="degreeslatitude" 
-                        id="degreeslatitude" 
-                        placeholder="Degrees Latitudex" 
-                        type="text"
-                        onChange={e => setLatitude(Number(e.target.value))} 
-                    />
-                  </FormGroup>
-                  {/*
-                  {'X'}
-                <UncontrolledDropdown>
-                    <DropdownToggle caret>
-                        North/South
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>North</DropdownItem>
-                      <DropdownItem>South</DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
-                */}
-                  {'X'}
-                  <FormGroup>
-                    <Label for="degreeslongitude" hidden >Longitude</Label>
-                    <Input 
-                        value={longitude}   
-                        name="degreeslongitude" 
-                        id="degreeslongitude" 
-                        placeholder="Degrees Longitudex" 
-                        type="text"
-                        onChange={e => setLongitude(Number(e.target.value))} 
-                    />
-                  </FormGroup>
-                  {/*
-                  {'X'}
-                <UncontrolledDropdown>
-                    <DropdownToggle caret>
-                        East/West
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem>East</DropdownItem>
-                      <DropdownItem>West</DropdownItem>
-                    </DropdownMenu>
-                </UncontrolledDropdown>
-                */}
-                  {'Z'}
-                  <Button onClick={refreshMap} >Submit</Button>
-                  <Button onClick={foo}>Call foo</Button> 
-                </Form>
-				</div>
-                {/*
-                <ControllableMap 
-                    id="mapid"  
-                    showcontrols={false} 
-                    mapPosition={mapPosition}
-                    areaOfInterest={areaOfInterest}
-                />
-                */}
-                <h2>My Component v3</h2>            
-                {/*
-                <label>City:</label>
-                <select
-                    required
-                    value={fake_mapPosition}
-                    onChange={(e) => {fake_setMapPosition(e.target.value)} }
-                >
-                    {cities.map(city => (
-                        <option value={city.lat_lng_as_string}>{city.country} | {city.city}</option>
-                    ))}
-                </select>
-                */}
-				<Form>
-				  <FormGroup>
-					<Label for="exampleSelect">
-					  City 
-					</Label>
-					<Input
+                    <Label for="city_select">
+                      City 
+                    </Label>
+                    <Input
                         required
                         value={fake_mapPosition}
                         onChange={(e) => {fake_setMapPosition(e.target.value)} }
-                        id="exampleSelect"
+                        id="city_select"
                         name="select"
                         type="select"
-					>
+                    >
                         {cities.map(city => (
                             <option value={city.lat_lng_as_string}>
                                 {city.country} | {city.city}
                             </option>
                         ))}
-					</Input>
-				  </FormGroup>
-				</Form>
-
+                    </Input>
+                  </FormGroup>
+                </Form>
+              </div>                
+              <div className="d-flex justify-content-left p-5">
                 <ControllableMapAlternate 
-                    mapPosition={fake_mapPosition}
+                  mapPosition={fake_mapPosition}
                 />
-            </div>                
-    )
+              </div>
+            </div>
+          )
 }
 
 /*
