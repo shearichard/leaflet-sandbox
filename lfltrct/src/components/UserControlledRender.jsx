@@ -155,6 +155,7 @@ const UserControlledRender = () => {
                 />
                 */}
                 <h2>My Component v3</h2>            
+                {/*
                 <label>City:</label>
                 <select
                     required
@@ -165,6 +166,28 @@ const UserControlledRender = () => {
                         <option value={city.lat_lng_as_string}>{city.country} | {city.city}</option>
                     ))}
                 </select>
+                */}
+				<Form>
+				  <FormGroup>
+					<Label for="exampleSelect">
+					  City 
+					</Label>
+					<Input
+                        required
+                        value={fake_mapPosition}
+                        onChange={(e) => {fake_setMapPosition(e.target.value)} }
+                        id="exampleSelect"
+                        name="select"
+                        type="select"
+					>
+                        {cities.map(city => (
+                            <option value={city.lat_lng_as_string}>
+                                {city.country} | {city.city}
+                            </option>
+                        ))}
+					</Input>
+				  </FormGroup>
+				</Form>
 
                 <ControllableMapAlternate 
                     mapPosition={fake_mapPosition}
