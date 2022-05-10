@@ -13,6 +13,8 @@ import {
   InputGroup,
   Button,
 } from 'reactstrap';
+import {get_cities, get_countries} from './utils';
+
 //_________________________________________
 import { useMap } from 'react-leaflet'
 import { MapContainer, Polygon, Marker, Popup, TileLayer } from "react-leaflet";
@@ -23,8 +25,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ControllableMap from './ControllableMap'
 
 const UserControlledRender = () => {
+
+    //
     console.log("UserControlledRender")
-    
+    //
+    const [cities, setCities] = useState([]);
+
+    useEffect(() => {
+        // Runs ONCE after initial rendering
+        //let arr_cities = get_cities();
+        setCities(get_cities()); 
+    }, []);
     const initialLatLngs = [
             [-41.29244, 174.77890],
             [-41.29551, 174.77715],
@@ -32,6 +43,7 @@ const UserControlledRender = () => {
             [-41.29407, 174.78391]]
     //
     const initialMapPosition = [-41.8484, 174.7621]
+    //
     const makeAreaDefinition = (lat, lng) => {
         console.log(`makeAreaDefinition starts lat = ${lat}, lng = ${lng} . `)
         return [
@@ -149,11 +161,11 @@ const UserControlledRender = () => {
                     value={fake_mapPosition}
                     onChange={(e) => {fake_setMapPosition(e.target.value)} }
                 >
-									<option value="41.881944_-87.627778">Chicago</option>
-									<option value="48_2">Paris</option>
-									<option value="-26.2044_28.0455">Johnannesberg</option>
-									<option value="12.978889_77.591667">Bangalore</option>
+                    {cities.map(city => (
+                        <option value={city.lat_lng_as_string}>{city.country} | {city.city}</option>
+                    ))}
                 </select>
+
                 <ControllableMapAlternate 
                     mapPosition={fake_mapPosition}
                 />
