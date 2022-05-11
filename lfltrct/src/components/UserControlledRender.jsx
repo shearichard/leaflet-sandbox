@@ -14,9 +14,6 @@ import {
   Button,
 } from 'reactstrap';
 import {get_cities, get_countries} from './utils';
-
-//_________________________________________
-import { useMap } from 'react-leaflet'
 import { MapContainer, Polygon, Marker, Popup, TileLayer } from "react-leaflet";
 //_________________________________________
 //import { useMap } from 'https://cdn.esm.sh/react-leaflet/hooks'
@@ -113,7 +110,7 @@ const UserControlledRender = () => {
                 </Form>
               </div>                
               <div className="d-flex justify-content-left p-5">
-                <ControllableMapAlternate 
+                <ControllableMap 
                   mapPosition={fake_mapPosition}
                 />
               </div>
@@ -128,52 +125,5 @@ function InternalMapCntnr(props) {
     return null;
 }
 */
-const ControllableMapAlternate = ( props ) => {
-	//
-	//The props.mapPosition value is a string that looks like this
-	//"12_34" which needs to be converted to a two element array like
-	//this [12,34] which equates to a latitude of 12 and a longitude of
-	//34
-	//
-    //
-    //[41.881944, -87.627778]
-    //
-    //Chicago
-    //Paris
-    //Johnannesberg
-    //Bangalore
-    const cities = [
-        [41.881944, -87.627778],
-        [48, 2],
-        [-26.2044, 28.0455],
-        [12.978889, 77.591667]
-    ] 
-    const selected_city = cities[Math.floor(Math.random() * cities.length)]
-    //
-    console.log("ControllableMapAlternate, props follow ...")
-    console.log(props)
-    console.log("ControllableMapAlternate, selected_city follow ...")
-    console.log(selected_city)
-    //
-    //<MapContainer id="mapid" style={{ height: "450px", width: "600px" }} center={selected_city} zoom={9} scrollWheelZoom={false}>
-		//<InternalMapCntnr  center={selected_city} zoom={9} />
-    //
-    return (
-        <MapContainer id="mapid" style={{ height: "450px", width: "600px" }} scrollWheelZoom={false}>
-            <InternalMapCntnr  center={props.mapPosition.split("_")} zoom={9} />
-        </MapContainer>
-    )
-}
-const InternalMapCntnr = ( props ) => {
-    const map = useMap()
-    map.setView(props.center, props.zoom);
-    console.log('map center:', map.getCenter())
-    return (
-        <TileLayer
-            attribution= 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-    )
-}
 
 export default UserControlledRender
