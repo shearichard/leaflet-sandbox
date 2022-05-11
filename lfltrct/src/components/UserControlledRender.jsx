@@ -15,15 +15,10 @@ import {
 } from 'reactstrap';
 import {get_cities, get_countries} from './utils';
 import { MapContainer, Polygon, Marker, Popup, TileLayer } from "react-leaflet";
-//_________________________________________
-//import { useMap } from 'https://cdn.esm.sh/react-leaflet/hooks'
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ControllableMap from './ControllableMap'
 
 const UserControlledRender = () => {
-
-    //
     console.log("UserControlledRender")
     //
     const [cities, setCities] = useState([]);
@@ -117,13 +112,4 @@ const UserControlledRender = () => {
             </div>
           )
 }
-
-/*
-function InternalMapCntnr(props) {
-    const map = useMap();
-    map.setView(props.center, props.zoom);
-    return null;
-}
-*/
-
 export default UserControlledRender
